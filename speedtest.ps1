@@ -16,6 +16,7 @@
 [Version 0.0.1] - Initial Release.
 [Version 0.0.2] - Added UseBasicParsing parameter to Invoke-WebRequest commands to fix issue with certain systems.
 [Version 0.0.3] - Adjusted to work with GDPR acceptance.
+[Version 0.0.4] - Adjusted not print out additional text
 
 #>
 
@@ -44,7 +45,7 @@ param (
 )
 
 # Version
-$CurrentVersion = '0.0.3'
+$CurrentVersion = '0.0.4'
 $RepoOwner = 'asheroto'
 $RepoName = 'speedtest'
 $PowerShellGalleryName = 'speedtest'
@@ -159,20 +160,20 @@ try {
     Remove-Files -zipPath $zipFilePath -folderPath $extractFolderPath
 
     $downloadLink = Get-SpeedTestDownloadLink
-    Write-Output "Downloading SpeedTest CLI..."
+    
     Download-SpeedTestZip -downloadLink $downloadLink -destination $zipFilePath
 
-    Write-Output "Extracting Zip File..."
+    
     Extract-Zip -zipPath $zipFilePath -destination $extractFolderPath
 
     $executablePath = Join-Path $extractFolderPath "speedtest.exe"
-    Write-Output "Running SpeedTest..."
+    
     Run-SpeedTest -executablePath $executablePath -arguments $ScriptArgs
 
-    Write-Output "Cleaning up..."
+    
     Remove-Files -zipPath $zipFilePath -folderPath $extractFolderPath
 
-    Write-Output "Done."
+    
 } catch {
     Write-Error "An error occurred: $_"
 }
