@@ -1,0 +1,3 @@
+template-file-path: aws/cloudformation/lambda-dynamo-s3-datareceiver.yaml
+parameters: {}
+tags: {}
