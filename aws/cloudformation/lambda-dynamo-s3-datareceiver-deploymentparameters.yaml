@@ -1,0 +1,10 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: "Empty CloudFormation stack for Git-linked deployment sync."
+
+Resources:
+  # No resources yet. This is an empty placeholder stack.
+
+Outputs:
+  PlaceholderOutput:
+    Description: "This stack has no resources yet."
+    Value: "Stack is empty"
